@@ -2,8 +2,6 @@ package ua.nure.sivolotskiy.config;
 
 
 import org.apache.log4j.Logger;
-import ua.nure.sivolotskiy.entity.Booking;
-import ua.nure.sivolotskiy.entity.Vehicle;
 import ua.nure.sivolotskiy.repository.BookingRepository;
 import ua.nure.sivolotskiy.repository.TripRepository;
 import ua.nure.sivolotskiy.repository.UserRepository;
