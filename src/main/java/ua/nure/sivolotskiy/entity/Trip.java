@@ -1,6 +1,5 @@
 package ua.nure.sivolotskiy.entity;
 
-
 import java.sql.Date;
 
 public class Trip extends Entity{

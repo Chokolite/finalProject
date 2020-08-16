@@ -1,11 +1,16 @@
 package ua.nure.sivolotskiy.repository.impl;
 
-import ua.nure.sivolotskiy.entity.*;
+import ua.nure.sivolotskiy.entity.Dispatcher;
 import ua.nure.sivolotskiy.entity.Driver;
+import ua.nure.sivolotskiy.entity.Role;
 import ua.nure.sivolotskiy.entity.User;
 import ua.nure.sivolotskiy.repository.UserRepository;
 
-import java.sql.*;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +29,6 @@ public class UserRepositoryImpl implements UserRepository {
     private static final String EXIST_USER_BY_EMAIL = "select 1 from users where email=?";
     private static final String EXIST_USER_BY_ID_AND_EMAIL = "select 1 from users where id=? and email=?";
     private static final String EXISTS_USER_BY_ID_AND_ENABLED = "select 1 from users where id = ? and enabled = 1";
-
-
 
     @Override
     public User getById(Connection connection, Long id) throws SQLException {

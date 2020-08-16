@@ -3,14 +3,12 @@
 
 <c:set var="title" value="Edit Trip form"/>
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
-<a href="" onclick="javascript:history.back(); return false;" id="back">
+<a href="" onclick="history.back(); return false;" id="back">
     <i class="fas fa-arrow-circle-left">
         <fmt:message key="editTrip"/>
     </i>
 </a>
     <div id="user_info" class="tableInfo"  style="margin: 0 auto; width: 100%;"  >
-
-
         <form action="/edit-trip" method="post">
             <table class="table">
                 <tr>

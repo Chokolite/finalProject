@@ -5,7 +5,7 @@
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
 
 <div id="login">
-    <a href="" onclick="javascript:history.back(); return false;" id="back">
+    <a href="" onclick="history.back(); return false;" id="back">
         <i class="fas fa-arrow-circle-left"></i>
     </a>
     <br>

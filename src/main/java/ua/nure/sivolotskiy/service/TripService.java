@@ -11,10 +11,6 @@ public interface TripService {
 
     Long save(Trip trip);
 
-    void setBookingService(BookingService bookingService);
-
-    void setVehicleService(VehicleService vehicleService);
-
     void delete(Long id);
 
     void update(Trip trip);

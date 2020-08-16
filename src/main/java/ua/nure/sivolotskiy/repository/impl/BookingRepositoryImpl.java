@@ -18,18 +18,7 @@ public class BookingRepositoryImpl implements BookingRepository {
             " u.id u_id, t.id t_id from booking b LEFT JOIN users u ON u.id=b.userId " +
             "LEFT JOIN trip t ON t.id=b.tripId";
 
-//    private static final String SELECT_JOIN_userId = "select b.id b_id, b.vehicleSpecification b_vehicleSpecification, " +
-//            "u.id u_id, u.name u_name " +
-//            "from booking b LEFT JOIN users u ON u.id=b.userId";
-    private static final String SELECT_JOIN_USER_ID = "select b.id b_id, b.vehicleSpecification b_vehicleSpecification, u.id u_id, u.name u_name from booking b LEFT JOIN users u ON u.id=b.userId;";
-
     private static final String SELECT_BOOKING_BY_ID = SELECT_ALL_BOOKING + " where b.id = ?";
-
-    private static final String SELECT_BOOKING_BY_USER_ID = "SELECT b.id b_id, b.vehicleSpecification b_vehicleSpecification, " +
-            "u.id u_id, u.name u_name" +
-            "from booking b" +
-            "join users u on u.id=b.userId" +
-            "where userId=?";
 
     private static final String INSERT_BOOKING = "insert into booking (userId, tripId, vehicleSpecification)" +
             "VALUES(?,?,?)";
@@ -39,8 +28,6 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     private static final String DELETE_BOOKING = "DELETE FROM booking WHERE id=?";
 
-    private static final String DELETE_BOOKING_BY_USER_ID = "DELETE FROM booking where userId=?";
-
     @Override
     public Booking getById(Connection connection, Long id) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SELECT_BOOKING_BY_ID);
@@ -49,17 +36,6 @@ public class BookingRepositoryImpl implements BookingRepository {
         return resultSet.next() ? convertResultSetToBooking(resultSet) : null;
     }
 
-    //    @Override
-//    public List<Booking> getAll(Connection connection, Long id, Long userId, String vehicleSpecification) throws SQLException {
-//        PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKING);
-//        ResultSet resultSet = statement.executeQuery();
-//
-//        List<Booking> bookings = new ArrayList<>();
-//        while (resultSet.next()) {
-//            bookings.add(convertResultSetToBooking(resultSet));
-//        }
-//        return bookings;
-//    }
     @Override
     public List<Booking> getAll(Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKING);
@@ -83,13 +59,6 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public void delete(Connection connection, Long id) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DELETE_BOOKING);
-        statement.setLong(1, id);
-        statement.executeUpdate();
-    }
-
-    @Override
-    public void deleteByUserId(Connection connection, Long id) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(DELETE_BOOKING_BY_USER_ID);
         statement.setLong(1, id);
         statement.executeUpdate();
     }
@@ -123,7 +92,6 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     private void setAttributeForSave(Booking booking, PreparedStatement statement) throws SQLException {
         int count = 0;
-//        statement.setLong(++count, booking.getId());
         statement.setLong(++count, booking.getUser().getId());
         statement.setLong(++count, booking.getTrip().getId());
         statement.setString(++count, booking.getVehicleSpecification());

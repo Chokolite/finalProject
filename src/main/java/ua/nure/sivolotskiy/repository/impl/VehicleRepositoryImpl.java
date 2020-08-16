@@ -6,7 +6,11 @@ import ua.nure.sivolotskiy.entity.Type;
 import ua.nure.sivolotskiy.entity.Vehicle;
 import ua.nure.sivolotskiy.repository.VehicleRepository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +23,6 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     private static final String UPDATE_VEHICLE = "UPDATE vehicle set name=?, sits=?, type=?, trunkSize=?, class=?," +
             " `condition`=? where id = ?";
     private static final String FINISH_VEHICLE = "UPDATE vehicle set `condition`=? where id=?";
-
 
     @Override
     public Vehicle getById(Connection connection, Long id) throws SQLException {
@@ -54,7 +57,6 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         statement.setLong(1, id);
         statement.executeUpdate();
     }
-
 
     @Override
     public void update(Connection connection, Vehicle vehicle) throws SQLException {

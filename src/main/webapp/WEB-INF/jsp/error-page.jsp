@@ -23,11 +23,11 @@
             </c:if>
         </c:when>
         <c:when test="${errorPage == 404}">
-            <a href="" onclick="javascript:history.back(); return false;"><fmt:message key="goback"/></a>
+            <a href="" onclick="history.back(); return false;"><fmt:message key="goback"/></a>
         </c:when>
         <c:otherwise>
             <fmt:message key="sorry"/>
-            <a href="" onclick="javascript:history.back(); return false;"><fmt:message key="goback"/></a>
+            <a href="" onclick="history.back(); return false;"><fmt:message key="goback"/></a>
         </c:otherwise>
     </c:choose>
     <br>

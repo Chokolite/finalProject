@@ -95,7 +95,7 @@
 
                         <td>
                             <a type="submit" name="select"
-                               onclick="window.location='/dispatcher/edit-trip?id='+${trip.id}" id="edit">
+                               onclick="window.location='/dispatcher/edit-trip?id=${trip.id}'" id="edit">
                                 <i class="fa fa-cog" aria-hidden="true"></i>
                             </a>
                         </td>

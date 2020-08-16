@@ -1,6 +1,5 @@
 package ua.nure.sivolotskiy.repository;
 
-import ua.nure.sivolotskiy.entity.Condition;
 import ua.nure.sivolotskiy.entity.Vehicle;
 
 import java.sql.Connection;

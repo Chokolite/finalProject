@@ -10,14 +10,11 @@ public interface BookingRepository {
 
     Booking getById(Connection connection, Long id) throws SQLException;
 
-//    List<Booking> getAll(Connection connection, Long id, Long userId, String vehicleSpecification) throws SQLException;
 List<Booking> getAll(Connection connection) throws SQLException;
 
     Long save(Connection connection, Booking booking) throws SQLException;
 
     void delete(Connection connection, Long id) throws SQLException;
-
-    void deleteByUserId(Connection connection, Long id) throws SQLException;
 
     void update(Connection connection, Booking booking) throws SQLException;
 }

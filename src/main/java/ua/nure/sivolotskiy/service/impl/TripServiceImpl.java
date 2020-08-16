@@ -17,10 +17,9 @@ public class TripServiceImpl implements TripService {
 
     private TransactionManager transactionManager;
     private TripRepository tripRepository;
-    private BookingService bookingService;
-    private VehicleService vehicleService;
 
-    public TripServiceImpl(TransactionManager transactionManager, TripRepository tripRepository, BookingService bookingService, VehicleService vehicleService) {
+
+    public TripServiceImpl(TransactionManager transactionManager, TripRepository tripRepository) {
         this.transactionManager = transactionManager;
         this.tripRepository = tripRepository;
     }
@@ -30,11 +29,6 @@ public class TripServiceImpl implements TripService {
         return transactionManager.execute(c -> tripRepository.getById(c, id));
     }
 
-    //    @Override
-//    public List<Trip> getAll(Long id, Long vehicleId, Long bookingId, Date date, Enum<Status> statusEnum) {
-//        return transactionManager.execute(c -> tripRepository
-//                .getAll(c, id, vehicleId, bookingId, date, statusEnum));
-//    }
     @Override
     public List<Trip> getAll( String orderBy, int offset) {
         return transactionManager.execute(c -> tripRepository
@@ -49,15 +43,6 @@ public class TripServiceImpl implements TripService {
         });
     }
 
-    @Override
-    public void setBookingService(BookingService bookingService) {
-        this.bookingService = bookingService;
-    }
-
-    @Override
-    public void setVehicleService(VehicleService vehicleService) {
-        this.vehicleService = vehicleService;
-    }
 
     @Override
     public void delete(Long id) {

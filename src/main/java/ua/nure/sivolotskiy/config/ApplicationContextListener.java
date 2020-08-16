@@ -50,10 +50,8 @@ public class ApplicationContextListener implements ServletContextListener {
         UserService userService = new UserServiceImpl(transactionManager, userRepository);
         BookingService bookingService = new BookingServiceImpl(transactionManager, bookingRepository);
         VehicleService vehicleService = new VehicleServiceImpl(transactionManager, vehicleRepository);
-        TripService tripService = new TripServiceImpl(transactionManager, tripRepository, bookingService, vehicleService);
+        TripService tripService = new TripServiceImpl(transactionManager, tripRepository);
 
-        tripService.setBookingService(bookingService);
-        tripService.setVehicleService(vehicleService);
 
         context.setAttribute(UserService.class.toString(), userService);
         context.setAttribute(BookingService.class.toString(), bookingService);

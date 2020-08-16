@@ -3,7 +3,7 @@
 
 <c:set var="title" value="Finish Trip form"/>
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
-<a href="" onclick="javascript:history.back(); return false;" id="back">
+<a href="" onclick="history.back(); return false;" id="back">
     <i class="fas fa-arrow-circle-left">
         <fmt:message key="finishTrip"/>
     </i>

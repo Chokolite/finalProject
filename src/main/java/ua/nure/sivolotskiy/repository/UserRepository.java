@@ -1,6 +1,5 @@
 package ua.nure.sivolotskiy.repository;
 
-
 import ua.nure.sivolotskiy.entity.Dispatcher;
 import ua.nure.sivolotskiy.entity.Driver;
 import ua.nure.sivolotskiy.entity.User;

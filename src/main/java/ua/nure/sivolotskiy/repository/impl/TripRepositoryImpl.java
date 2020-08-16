@@ -5,7 +5,10 @@ import ua.nure.sivolotskiy.repository.TripRepository;
 import ua.nure.sivolotskiy.repository.sql.SelectBuilder;
 import ua.nure.sivolotskiy.repository.sql.SqlBuilder;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -35,18 +38,6 @@ public class TripRepositoryImpl implements TripRepository {
         return resultSet.next() ? convertResultSetToTrips(resultSet) : null;
     }
 
-    //    @Override
-//    public List<Trip> getAll(Connection connection, Long id, Long vehicleId,
-//                             Long bookingId, Date date, Enum<Status> statusEnum) throws SQLException {
-//        PreparedStatement statement = connection.prepareStatement(SELECT_ALL_TRIPS);
-//        ResultSet resultSet = statement.executeQuery();
-//
-//        List<Trip> trips = new ArrayList<>();
-//        while (resultSet.next()) {
-//            trips.add(convertResultSetToTrips(resultSet));
-//        }
-//        return trips;
-//    }
     @Override
     public List<Trip> getAll(Connection connection, String orderBy, int offset) throws SQLException {
         SelectBuilder select = SqlBuilder.select(SELECT_ALL_TRIPS);
@@ -109,8 +100,6 @@ public class TripRepositoryImpl implements TripRepository {
 
     private void setAttributeForSaveTrip(Trip trip, PreparedStatement statement) throws SQLException {
         int count = 0;
-   //     statement.setLong(++count, trip.getVehicle().getId()); //changed this. Trip creating won't work with uncommented
-     //   statement.setLong(++count, trip.getBooking().getId()); //and this
         statement.setDate(++count, trip.getCreateDate());
         statement.setString(++count, String.valueOf(trip.getStatus()));
         statement.setString(++count, trip.getTask());
@@ -134,10 +123,5 @@ public class TripRepositoryImpl implements TripRepository {
         boolean ascending = !orderBy.split(",")[1].equals("DESC");
         select.order(field, ascending);
     }
-
-    private void setFilter(String tripStatus, SelectBuilder select) {
-        if (Objects.nonNull(tripStatus)) {
-            select.where().like("t.status", tripStatus);
-        }
-    }
 }
+

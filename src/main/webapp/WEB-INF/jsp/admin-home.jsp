@@ -128,7 +128,7 @@
                             <td>${trip.status}</td>
                             <td>
                                 <a type="submit" name="select"
-                                   onclick="window.location='/user/create-booking?id=${trip.id}&userId=${user.id}'
+                                   onclick="window.location='/user/create-booking?id=${trip.id}&userId=${user.id}';
                                            return false"
                                    id="edit">
                                     <i class="fa fa-check" aria-hidden="true"></i>
