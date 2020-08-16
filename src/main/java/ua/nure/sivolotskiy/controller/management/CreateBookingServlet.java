@@ -39,13 +39,13 @@ public class CreateBookingServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         User user = new User();
-        user.setId(Long.valueOf(request.getParameter("user_id")));
+        user.setId(Long.valueOf(request.getParameter("userId")));
         Trip trip = new Trip();
         trip.setId(Long.valueOf(request.getParameter("id")));
         String specification = request.getParameter("specification");
         System.out.println(specification);
         Booking booking = ConverterUtils.convertRequestToBooking(request);
-        booking.setVehicle_specification(specification);
+        booking.setVehicleSpecification(specification);
         booking.setTrip(trip);
         booking.setUser(user);
 

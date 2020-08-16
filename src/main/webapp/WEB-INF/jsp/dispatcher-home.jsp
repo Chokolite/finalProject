@@ -40,16 +40,16 @@
             <c:url value="/dispatcher/dispatcher-home" var="sortDate">
                 <c:set var="ascDesc" value="ASC"/>
             <c:choose>
-            <c:when test="${param.order == 't.create_date,ASC'}">
+            <c:when test="${param.order == 't.createDate,ASC'}">
                 <c:set var="ascDesc" value="DESC"/>
             </c:when>
-            <c:when test="${param.order == 't.create_date,DESC'}">
+            <c:when test="${param.order == 't.createDate,DESC'}">
                 <c:set var="ascDesc" value="ASC"/>
             </c:when>
             </c:choose>
-                <c:param name="order" value="t.create_date,${ascDesc}"/>
+                <c:param name="order" value="t.createDate,${ascDesc}"/>
             <c:if test="${param.status != null}">
-                <c:param name="create_date" value="${param.create_date}"/>
+                <c:param name="createDate" value="${param.createDate}"/>
             </c:if>
             </c:url>
 
@@ -77,9 +77,9 @@
             <table style="width: -webkit-fill-available;">
                 <tr>
                     <th><a href='<c:out value="${sortAmount}" />'><fmt:message key="id"/></a></th>
-                    <th><fmt:message key="vehicle_id"/></th>
-                    <th><fmt:message key="booking_id"/></th>
-                    <th><a href='<c:out value="${sortDate}"/> '><fmt:message key="create_date"/></a></th>
+                    <th><fmt:message key="vehicleId"/></th>
+                    <th><fmt:message key="bookingId"/></th>
+                    <th><a href='<c:out value="${sortDate}"/> '><fmt:message key="createDate"/></a></th>
                     <th><a href='<c:out value="${sortStatus}" />'><fmt:message key="status"/></a></th>
                     <th></th>
                     <th></th>
@@ -90,7 +90,7 @@
                         <td>${trip.id}</td>
                         <td>${trip.vehicle.id}</td>
                         <td>${trip.booking.id}</td>
-                        <td>${trip.create_date}</td>
+                        <td>${trip.createDate}</td>
                         <td>${trip.status}</td>
 
                         <td>
@@ -120,9 +120,9 @@
                 <table style="width: -webkit-fill-available; ">
                     <tr>
                         <th><fmt:message key="id"/></th>
-                        <th><fmt:message key="user_id"/></th>
+                        <th><fmt:message key="userId"/></th>
                         <th><fmt:message key="trip"/></th>
-                        <th><fmt:message key="vehicle_specification"/></th>
+                        <th><fmt:message key="vehicleSpecification"/></th>
                         <th></th>
                     </tr>
                     <c:forEach var="booking" items="${bookings}">
@@ -130,7 +130,7 @@
                             <td>${booking.id}</td>
                             <td>${booking.user.id}</td>
                             <td>${booking.trip.id}</td>
-                            <td>${booking.vehicle_specification}</td>
+                            <td>${booking.vehicleSpecification}</td>
                             <td>
                                 <a type="submit" name="select"
                                    onclick="window.location='/delete-booking?id=${booking.id}&role=${user.role}'"
@@ -153,7 +153,7 @@
                             <th><fmt:message key="name"/></th>
                             <th><fmt:message key="sits"/></th>
                             <th><fmt:message key="type"/></th>
-                            <th><fmt:message key="car_class"/></th>
+                            <th><fmt:message key="carClass"/></th>
                             <th><fmt:message key="condition"/></th>
 
 
@@ -164,7 +164,7 @@
                                 <td>${vehicle.name}</td>
                                 <td>${vehicle.sits}</td>
                                 <td>${vehicle.type}</td>
-                                <td>${vehicle.car_class}</td>
+                                <td>${vehicle.carClass}</td>
                                 <td>${vehicle.condition}</td>
 
                             </tr>

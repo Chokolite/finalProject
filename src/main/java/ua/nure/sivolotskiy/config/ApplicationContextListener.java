@@ -1,6 +1,5 @@
 package ua.nure.sivolotskiy.config;
 
-
 import org.apache.log4j.Logger;
 import ua.nure.sivolotskiy.repository.BookingRepository;
 import ua.nure.sivolotskiy.repository.TripRepository;
@@ -47,7 +46,6 @@ public class ApplicationContextListener implements ServletContextListener {
         BookingRepository bookingRepository = new BookingRepositoryImpl();
         TripRepository tripRepository = new TripRepositoryImpl();
         VehicleRepository vehicleRepository = new VehicleRepositoryImpl();
-
 
         UserService userService = new UserServiceImpl(transactionManager, userRepository);
         BookingService bookingService = new BookingServiceImpl(transactionManager, bookingRepository);

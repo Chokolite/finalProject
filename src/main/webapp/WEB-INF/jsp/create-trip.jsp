@@ -17,7 +17,7 @@
 
         <fieldset class="clearfix">
             <p><span class="fontawesome-table"></span>
-                <input type="date" name="date" placeholder="<fmt:message key="create_date"/>" required>
+                <input type="date" name="date" placeholder="<fmt:message key="createDate"/>" required>
             </p>
 
             <p><span class="fontawesome-book"></span>

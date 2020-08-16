@@ -1,7 +1,7 @@
 package ua.nure.sivolotskiy.repository.impl;
 
 import ua.nure.sivolotskiy.entity.Condition;
-import ua.nure.sivolotskiy.entity.Trunk_Size;
+import ua.nure.sivolotskiy.entity.TrunkSize;
 import ua.nure.sivolotskiy.entity.Type;
 import ua.nure.sivolotskiy.entity.Vehicle;
 import ua.nure.sivolotskiy.repository.VehicleRepository;
@@ -13,10 +13,10 @@ import java.util.List;
 public class VehicleRepositoryImpl implements VehicleRepository {
     private static final String SELECT_ALL_VEHICLE = "select * from vehicle";
     private static final String SELECT_VEHICLE_BY_ID = "SELECT * FROM vehicle where id=?";
-    private static final String INSERT_VEHICLE = "INSERT INTO vehicle (name, sits, type, trunk_size, class, `condition`)" +
+    private static final String INSERT_VEHICLE = "INSERT INTO vehicle (name, sits, type, trunkSize, class, `condition`)" +
             "VALUES(?,?,?,?,?,?)";
     private static final String DELETE_VEHICLE = "DELETE FROM vehicle where id=?";
-    private static final String UPDATE_VEHICLE = "UPDATE vehicle set name=?, sits=?, type=?, trunk_size=?, class=?," +
+    private static final String UPDATE_VEHICLE = "UPDATE vehicle set name=?, sits=?, type=?, trunkSize=?, class=?," +
             " `condition`=? where id = ?";
     private static final String FINISH_VEHICLE = "UPDATE vehicle set `condition`=? where id=?";
 
@@ -83,8 +83,8 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         vehicle.setName(resultSet.getString("name"));
         vehicle.setSits(resultSet.getLong("sits"));
         vehicle.setType(Type.valueOf(resultSet.getString("type")));
-        vehicle.setTrunk_size(Trunk_Size.valueOf(resultSet.getString("trunk_size")));
-        vehicle.setCar_class(resultSet.getString("class"));
+        vehicle.setTrunkSize(TrunkSize.valueOf(resultSet.getString("trunkSize")));
+        vehicle.setCarClass(resultSet.getString("class"));
         vehicle.setCondition(Condition.valueOf(resultSet.getString("condition")));
 
         return vehicle;
@@ -95,8 +95,8 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         statement.setString(count++, vehicle.getName());
         statement.setLong(count++, vehicle.getSits());
         statement.setString(count++, String.valueOf(vehicle.getType()));
-        statement.setString(count++, String.valueOf(vehicle.getTrunk_size()));
-        statement.setString(count++, String.valueOf(vehicle.getCar_class()));
+        statement.setString(count++, String.valueOf(vehicle.getTrunkSize()));
+        statement.setString(count++, String.valueOf(vehicle.getCarClass()));
         statement.setString(count++, String.valueOf(vehicle.getCondition()));
     }
     private void setAttributeForUpdateVehicle(Vehicle vehicle, PreparedStatement statement) throws SQLException {
@@ -104,8 +104,8 @@ public class VehicleRepositoryImpl implements VehicleRepository {
         statement.setString(++count, vehicle.getName());
         statement.setLong(++count, vehicle.getSits());
         statement.setString(++count, String.valueOf(vehicle.getType()));
-        statement.setString(++count, String.valueOf(vehicle.getTrunk_size()));
-        statement.setString(++count, String.valueOf(vehicle.getCar_class()));
+        statement.setString(++count, String.valueOf(vehicle.getTrunkSize()));
+        statement.setString(++count, String.valueOf(vehicle.getCarClass()));
         statement.setString(++count, String.valueOf(vehicle.getCondition()));
         statement.setLong(++count, vehicle.getId());
     }

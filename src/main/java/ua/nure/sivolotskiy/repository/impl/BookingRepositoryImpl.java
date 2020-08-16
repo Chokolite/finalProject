@@ -14,32 +14,32 @@ import java.util.List;
 
 public class BookingRepositoryImpl implements BookingRepository {
 
-    private static final String SELECT_ALL_BOOKING = "select b.id b_id, b.vehicle_specification b_vehicle_specification," +
-            " u.id u_id, t.id t_id from booking b LEFT JOIN users u ON u.id=b.user_id " +
-            "LEFT JOIN trip t ON t.id=b.trip_id";
+    private static final String SELECT_ALL_BOOKING = "select b.id b_id, b.vehicleSpecification b_vehicleSpecification," +
+            " u.id u_id, t.id t_id from booking b LEFT JOIN users u ON u.id=b.userId " +
+            "LEFT JOIN trip t ON t.id=b.tripId";
 
-//    private static final String SELECT_JOIN_USER_ID = "select b.id b_id, b.vehicle_specification b_vehicle_specification, " +
+//    private static final String SELECT_JOIN_userId = "select b.id b_id, b.vehicleSpecification b_vehicleSpecification, " +
 //            "u.id u_id, u.name u_name " +
-//            "from booking b LEFT JOIN users u ON u.id=b.user_id";
-    private static final String SELECT_JOIN_USER_ID = "select b.id b_id, b.vehicle_specification b_vehicle_specification, u.id u_id, u.name u_name from booking b LEFT JOIN users u ON u.id=b.user_id;";
+//            "from booking b LEFT JOIN users u ON u.id=b.userId";
+    private static final String SELECT_JOIN_USER_ID = "select b.id b_id, b.vehicleSpecification b_vehicleSpecification, u.id u_id, u.name u_name from booking b LEFT JOIN users u ON u.id=b.userId;";
 
     private static final String SELECT_BOOKING_BY_ID = SELECT_ALL_BOOKING + " where b.id = ?";
 
-    private static final String SELECT_BOOKING_BY_USER_ID = "SELECT b.id b_id, b.vehicle_specification b_vehicle_specification, " +
+    private static final String SELECT_BOOKING_BY_USER_ID = "SELECT b.id b_id, b.vehicleSpecification b_vehicleSpecification, " +
             "u.id u_id, u.name u_name" +
             "from booking b" +
-            "join users u on u.id=b.user_id" +
-            "where user_id=?";
+            "join users u on u.id=b.userId" +
+            "where userId=?";
 
-    private static final String INSERT_BOOKING = "insert into booking (user_id, trip_id, vehicle_specification)" +
+    private static final String INSERT_BOOKING = "insert into booking (userId, tripId, vehicleSpecification)" +
             "VALUES(?,?,?)";
 
-    private static final String UPDATE_BOOKING = "UPDATE booking SET trip_id=?, user_id=?, vehicle_specification=?" +
+    private static final String UPDATE_BOOKING = "UPDATE booking SET tripId=?, userId=?, vehicleSpecification=?" +
             "where id=?";
 
     private static final String DELETE_BOOKING = "DELETE FROM booking WHERE id=?";
 
-    private static final String DELETE_BOOKING_BY_USER_ID = "DELETE FROM booking where user_id=?";
+    private static final String DELETE_BOOKING_BY_USER_ID = "DELETE FROM booking where userId=?";
 
     @Override
     public Booking getById(Connection connection, Long id) throws SQLException {
@@ -50,7 +50,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     }
 
     //    @Override
-//    public List<Booking> getAll(Connection connection, Long id, Long user_id, String vehicle_specification) throws SQLException {
+//    public List<Booking> getAll(Connection connection, Long id, Long userId, String vehicleSpecification) throws SQLException {
 //        PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKING);
 //        ResultSet resultSet = statement.executeQuery();
 //
@@ -104,7 +104,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     private Booking convertResultSetToBooking(ResultSet resultSet) throws SQLException {
         Booking booking = new Booking();
         booking.setId(resultSet.getLong("b_id"));
-        booking.setVehicle_specification(resultSet.getString("b_vehicle_specification"));
+        booking.setVehicleSpecification(resultSet.getString("b_vehicleSpecification"));
         Entity user = new Entity();
         user.setId(resultSet.getLong("u_id"));
         Trip trip = new Trip();
@@ -126,7 +126,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 //        statement.setLong(++count, booking.getId());
         statement.setLong(++count, booking.getUser().getId());
         statement.setLong(++count, booking.getTrip().getId());
-        statement.setString(++count, booking.getVehicle_specification());
+        statement.setString(++count, booking.getVehicleSpecification());
     }
 
     private void setAttributeForUpdateBooking(Booking booking, PreparedStatement statement) throws SQLException {
@@ -134,7 +134,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 
         statement.setLong(++count, booking.getUser().getId());
         statement.setLong(++count, booking.getTrip().getId());
-        statement.setString(++count, booking.getVehicle_specification());
+        statement.setString(++count, booking.getVehicleSpecification());
         statement.setLong(++count, booking.getId());
     }
 }

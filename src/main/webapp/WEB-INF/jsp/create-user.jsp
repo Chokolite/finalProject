@@ -27,7 +27,7 @@
             </p>
             <p><span class="fontawesome-key"></span><input type="password" maxlength="20" name="password" placeholder="<fmt:message key="password"/>" required pattern="[0-9a-zA-Z]{6,20}">
             </p>
-            <p><span class="fontawesome-key"></span><input type="password" maxlength="20" name="re_password" placeholder="<fmt:message key="repass"/>" required pattern="[0-9a-zA-Z]{6,20}">
+            <p><span class="fontawesome-key"></span><input type="password" maxlength="20" name="rePassword" placeholder="<fmt:message key="repass"/>" required pattern="[0-9a-zA-Z]{6,20}">
             </p>
             <p><span class="fontawesome-user"></span><select name="role" size="1">
                 <option value="ADMIN" selected>Admin</option>

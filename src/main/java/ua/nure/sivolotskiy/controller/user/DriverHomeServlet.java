@@ -50,7 +50,7 @@ public class DriverHomeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Long trip_id = Long.valueOf(request.getParameter("trip_id"));
+        // Long tripId = Long.valueOf(request.getParameter("tripId"));
 
     }
 }

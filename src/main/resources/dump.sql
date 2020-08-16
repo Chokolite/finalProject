@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `booking`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `booking` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `trip_id` bigint DEFAULT NULL,
+  `tripId` bigint DEFAULT NULL,
   `user_id` bigint NOT NULL,
-  `vehicle_specification` text NOT NULL,
+  `vehicleSpecification` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -52,17 +52,17 @@ DROP TABLE IF EXISTS `trip`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `trip` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `vehicle_id` bigint DEFAULT NULL,
-  `booking_id` bigint DEFAULT NULL,
-  `create_date` date NOT NULL,
+  `vehicleId` bigint DEFAULT NULL,
+  `bookingId` bigint DEFAULT NULL,
+  `createDate` date NOT NULL,
   `status` enum('OPEN','IN_WORK','CLOSED') NOT NULL DEFAULT 'OPEN',
   `task` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
-  KEY `vehicle_od_idx` (`vehicle_id`),
-  KEY `booking_id_idx` (`booking_id`),
-  CONSTRAINT `booking_id` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `vehicle_id` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  KEY `vehicle_od_idx` (`vehicleId`),
+  KEY `bookingId_idx` (`bookingId`),
+  CONSTRAINT `bookingId` FOREIGN KEY (`bookingId`) REFERENCES `booking` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `vehicleId` FOREIGN KEY (`vehicleId`) REFERENCES `vehicle` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

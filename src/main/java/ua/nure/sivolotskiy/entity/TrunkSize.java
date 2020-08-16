@@ -1,5 +1,5 @@
 package ua.nure.sivolotskiy.entity;
 
-public enum Trunk_Size {
+public enum TrunkSize {
     TINY, SMALL, MEDIUM, LARGE;
 }

@@ -14,17 +14,17 @@
             <table class="table">
                 <tr>
                     <th><fmt:message key="trip"/> <fmt:message key="id"/> </th>
-                    <th><fmt:message key="vehicle_id"/></th>
-                    <th><fmt:message key="booking_id"/></th>
-                    <th><fmt:message key="create_date"/></th>
+                    <th><fmt:message key="vehicleId"/></th>
+                    <th><fmt:message key="bookingId"/></th>
+                    <th><fmt:message key="createDate"/></th>
                     <th><fmt:message key="condition"/> </th>
                     <th><fmt:message key="status"/> </th>
                 </tr>
                 <tr>
                     <td><input type="number" name="id" value="${trip.id}" required/></td>
-                    <td><input type="number" name="vehicle_id" value="${trip.vehicle.id}" required/></td>
-                    <td><input type="number" name="booking_id" value="${trip.booking.id}" required/></td>
-                    <td><input type="date" name="date" value="${trip.create_date}" readonly/></td>
+                    <td><input type="number" name="vehicleId" value="${trip.vehicle.id}" required/></td>
+                    <td><input type="number" name="bookingId" value="${trip.booking.id}" required/></td>
+                    <td><input type="date" name="date" value="${trip.createDate}" readonly/></td>
                     <td><p><select name="condition" size="1" required>
                         <option value="GOOD"><fmt:message key="good"/></option>
                         <option value="BROKEN"><fmt:message key="broken"/></option>
@@ -53,8 +53,8 @@
                 <th><fmt:message key="name"/></th>
                 <th><fmt:message key="sits"/></th>
                 <th><fmt:message key="type"/></th>
-                <th><fmt:message key="trunk_size"/></th>
-                <th><fmt:message key="car_class"/></th>
+                <th><fmt:message key="trunkSize"/></th>
+                <th><fmt:message key="carClass"/></th>
                 <th><fmt:message key="condition"/></th>
 
             </tr>
@@ -64,8 +64,8 @@
                     <td>${vehicle.name}</td>
                     <td>${vehicle.sits}</td>
                     <td>${vehicle.type}</td>
-                    <td>${vehicle.trunk_size}</td>
-                    <td>${vehicle.car_class}</td>
+                    <td>${vehicle.trunkSize}</td>
+                    <td>${vehicle.carClass}</td>
                     <td>${vehicle.condition}</td>
                 </tr>
             </c:forEach>

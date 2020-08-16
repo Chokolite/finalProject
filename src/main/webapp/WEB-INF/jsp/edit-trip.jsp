@@ -15,16 +15,16 @@
             <table class="table">
                 <tr>
                     <th><fmt:message key="id"/></th>
-                    <th><fmt:message key="vehicle_id"/></th>
-                    <th><fmt:message key="booking_id"/></th>
-                    <th><fmt:message key="create_date"/></th>
+                    <th><fmt:message key="vehicleId"/></th>
+                    <th><fmt:message key="bookingId"/></th>
+                    <th><fmt:message key="createDate"/></th>
                     <th><fmt:message key="status"/> </th>
                 </tr>
                 <tr>
                     <td><input type="number" name="id" value="${trip.id}" required/></td>
-                    <td><input type="number" name="vehicle_id" value="${trip.vehicle_id}" required/></td>
-                    <td><input type="number" name="booking_id" value="${trip.booking.id}" required/></td>
-                    <td><input type="date" name="date" value="${trip.create_date}" required/></td>
+                    <td><input type="number" name="vehicleId" value="${trip.vehicleId}" required/></td>
+                    <td><input type="number" name="bookingId" value="${trip.booking.id}" required/></td>
+                    <td><input type="date" name="date" value="${trip.createDate}" required/></td>
                     <td>
                         <p><select name="status" size="1">
                             <option value="OPEN" selected>Open</option>
@@ -45,9 +45,9 @@
             <table class="table">
                 <tr>
                     <th><fmt:message key="id"/></th>
-                    <th><fmt:message key="user_id"/></th>
+                    <th><fmt:message key="userId"/></th>
                     <th><fmt:message key="trip"/> </th>
-                    <th><fmt:message key="vehicle_specification"/></th>
+                    <th><fmt:message key="vehicleSpecification"/></th>
                 </tr>
                 <c:forEach var="booking" items="${bookings}">
                     <c:if test="${trip.id eq booking.trip.id}">
@@ -55,7 +55,7 @@
                     <td>${booking.id}</td>
                     <td>${booking.user.id}</td>
                     <td>${booking.trip.id}</td>
-                    <td>${booking.vehicle_specification}</td>
+                    <td>${booking.vehicleSpecification}</td>
                 </tr>
                     </c:if>
                 </c:forEach>
@@ -67,8 +67,8 @@
                 <th><fmt:message key="name"/></th>
                 <th><fmt:message key="sits"/></th>
                 <th><fmt:message key="type"/></th>
-                <th><fmt:message key="trunk_size"/></th>
-                <th><fmt:message key="car_class"/></th>
+                <th><fmt:message key="trunkSize"/></th>
+                <th><fmt:message key="carClass"/></th>
                 <th><fmt:message key="condition"/></th>
 
             </tr>
@@ -78,8 +78,8 @@
                     <td>${vehicle.name}</td>
                     <td>${vehicle.sits}</td>
                     <td>${vehicle.type}</td>
-                    <td>${vehicle.trunk_size}</td>
-                    <td>${vehicle.car_class}</td>
+                    <td>${vehicle.trunkSize}</td>
+                    <td>${vehicle.carClass}</td>
                     <td>${vehicle.condition}</td>
                 </tr>
             </c:forEach>

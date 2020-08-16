@@ -18,8 +18,8 @@
                 <th><fmt:message key="name"/></th>
                 <th><fmt:message key="sits"/></th>
                 <th><fmt:message key="type"/></th>
-                <th><fmt:message key="trunk_size"/></th>
-                <th><fmt:message key="car_class"/></th>
+                <th><fmt:message key="trunkSize"/></th>
+                <th><fmt:message key="carClass"/></th>
                 <th><fmt:message key="condition"/></th>
             </tr>
 
@@ -38,15 +38,15 @@
                     </select>
                 </td>
                 <td>
-                    <select name="trunk_size" size="1" required>
-                        <option value="${vehicle.trunk_size}" selected>${vehicle.trunk_size}</option>
+                    <select name="trunkSize" size="1" required>
+                        <option value="${vehicle.trunkSize}" selected>${vehicle.trunkSize}</option>
                         <option value="TINY"><fmt:message key="tiny"/></option>
                         <option value="SMALL"><fmt:message key="small"/></option>
                         <option value="MEDIUM"><fmt:message key="medium"/></option>
                         <option value="LARGE"><fmt:message key="large"/></option>
                     </select>
                 </td>
-                <td><input type="text" name="car_class" value="${vehicle.car_class}" required/></td>
+                <td><input type="text" name="carClass" value="${vehicle.carClass}" required/></td>
                 <td>
                     <p><select name="condition" size="1" required>
                         <option value="${vehicle.condition}" selected>${vehicle.condition}</option>

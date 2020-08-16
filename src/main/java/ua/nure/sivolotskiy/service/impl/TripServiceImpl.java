@@ -31,9 +31,9 @@ public class TripServiceImpl implements TripService {
     }
 
     //    @Override
-//    public List<Trip> getAll(Long id, Long vehicle_id, Long booking_id, Date date, Enum<Status> statusEnum) {
+//    public List<Trip> getAll(Long id, Long vehicleId, Long bookingId, Date date, Enum<Status> statusEnum) {
 //        return transactionManager.execute(c -> tripRepository
-//                .getAll(c, id, vehicle_id, booking_id, date, statusEnum));
+//                .getAll(c, id, vehicleId, bookingId, date, statusEnum));
 //    }
     @Override
     public List<Trip> getAll( String orderBy, int offset) {

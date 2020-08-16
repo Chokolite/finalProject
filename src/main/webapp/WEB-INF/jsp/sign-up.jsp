@@ -26,7 +26,7 @@
             <p><span class="fontawesome-envelope"></span><input type="email" name="email" placeholder="<fmt:message key="email"/>" required></p>
             <p><span class="fontawesome-lock"></span><input type="password" name="password" maxlength="20" placeholder="<fmt:message key="password" />"
                                                             required pattern="[0-9a-zA-Z]{6,20}"></p>
-            <p><span class="fontawesome-lock"></span><input type="password" name="re_password" maxlength="20" placeholder="<fmt:message key="repass" />"
+            <p><span class="fontawesome-lock"></span><input type="password" name="rePassword" maxlength="20" placeholder="<fmt:message key="repass" />"
                                                             required pattern="[0-9a-zA-Z]{6,20}"></p>
             <p><input type="submit" name="submit" value="<fmt:message key="signup"/>"></p>
         </fieldset>

@@ -3,8 +3,8 @@ package ua.nure.sivolotskiy.entity;
 public class Vehicle extends Entity {
     private Long sits;
     private Type type;
-    private Trunk_Size trunk_size;
-    private String car_class;
+    private TrunkSize trunkSize;
+    private String carClass;
     private Condition condition;
 
     public Vehicle() {
@@ -31,20 +31,20 @@ public class Vehicle extends Entity {
         this.type = type;
     }
 
-    public Trunk_Size getTrunk_size() {
-        return trunk_size;
+    public TrunkSize getTrunkSize() {
+        return trunkSize;
     }
 
-    public void setTrunk_size(Trunk_Size trunk_size) {
-        this.trunk_size = trunk_size;
+    public void setTrunkSize(TrunkSize trunkSize) {
+        this.trunkSize = trunkSize;
     }
 
-    public String getCar_class() {
-        return car_class;
+    public String getCarClass() {
+        return carClass;
     }
 
-    public void setCar_class(String car_class) {
-        this.car_class = car_class;
+    public void setCarClass(String carClass) {
+        this.carClass = carClass;
     }
 
     public Condition getCondition() {

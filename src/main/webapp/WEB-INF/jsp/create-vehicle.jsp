@@ -32,7 +32,7 @@
                 </select>
             </p>
             <p><span class="fontawesome-book"></span>
-                <select name="trunk_size" size="1">
+                <select name="trunkSize" size="1">
                     <option value="TINY" selected><fmt:message key="tiny"/></option>
                     <option value="SMALL"><fmt:message key="small"/></option>
                     <option value="MEDIUM"><fmt:message key="medium"/></option>
@@ -42,7 +42,7 @@
 
             <p>
                 <span class="fontawesome-table"></span>
-                <input type="text" name="car_class" placeholder="<fmt:message key="car_class"/>" required>
+                <input type="text" name="carClass" placeholder="<fmt:message key="carClass"/>" required>
             </p>
             <p><span class="fontawesome-book"></span>
                 <select name="condition" size="1">

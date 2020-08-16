@@ -13,17 +13,17 @@ import java.util.Objects;
 public class TripRepositoryImpl implements TripRepository {
 
     private static final String DEFAULT_ORDER = "t.id,ASC";
-    private static final String SELECT_ALL_TRIPS = "select t.id t_id, t.vehicle_id t_vid, t.booking_id t_bid," +
-            " t.create_date t_cdate, t.status t_status, t.task t_task" +
-            "  from trip t left join vehicle v ON t.vehicle_id=v.id left join booking b on t.booking_id=b.id";
-    private static final String SELECT_JOIN_BOOKING_AND_VEHICLE = "SELECT t.id t_id, t.vehicle_id t_vehicle_id," +
-            " t.booking_id t_booking_id, t.create_date t_cdate, t.status t_status" +
-            "FROM trip t LEFT JOIN booking b ON t.booking_id=b.id" +
-            "LEFT JOIN vehicle v ON t.vehicle_id=v.id";
+    private static final String SELECT_ALL_TRIPS = "select t.id t_id, t.vehicleId t_vid, t.bookingId t_bid," +
+            " t.createDate t_cdate, t.status t_status, t.task t_task" +
+            "  from trip t left join vehicle v ON t.vehicleId=v.id left join booking b on t.bookingId=b.id";
+    private static final String SELECT_JOIN_BOOKING_AND_VEHICLE = "SELECT t.id t_id, t.vehicleId t_vehicleId," +
+            " t.bookingId t_bookingId, t.createDate t_cdate, t.status t_status" +
+            "FROM trip t LEFT JOIN booking b ON t.bookingId=b.id" +
+            "LEFT JOIN vehicle v ON t.vehicleId=v.id";
     private static final String SELECT_TRIP_BY_ID = SELECT_ALL_TRIPS + " where t.id=?";
-    private static final String INSERT_TRIP = "INSERT INTO trip(create_date, status, task)" +
+    private static final String INSERT_TRIP = "INSERT INTO trip(createDate, status, task)" +
             " VALUES(?,?,?)";
-    private static final String UPDATE_TRIP = "UPDATE trip SET id=?, vehicle_id=?, booking_id=?, create_date=?, status=?" +
+    private static final String UPDATE_TRIP = "UPDATE trip SET id=?, vehicleId=?, bookingId=?, createDate=?, status=?" +
             " WHERE id=?";
     private static final String DElETE_TRIP = "DELETE FROM trip WHERE id=?";
 
@@ -36,8 +36,8 @@ public class TripRepositoryImpl implements TripRepository {
     }
 
     //    @Override
-//    public List<Trip> getAll(Connection connection, Long id, Long vehicle_id,
-//                             Long booking_id, Date date, Enum<Status> statusEnum) throws SQLException {
+//    public List<Trip> getAll(Connection connection, Long id, Long vehicleId,
+//                             Long bookingId, Date date, Enum<Status> statusEnum) throws SQLException {
 //        PreparedStatement statement = connection.prepareStatement(SELECT_ALL_TRIPS);
 //        ResultSet resultSet = statement.executeQuery();
 //
@@ -100,7 +100,7 @@ public class TripRepositoryImpl implements TripRepository {
         trip.setId(resultSet.getLong("t_id"));
         trip.setVehicle(vehicle);
         trip.setBooking(booking);
-        trip.setCreate_date(resultSet.getDate("t_cdate"));
+        trip.setCreateDate(resultSet.getDate("t_cdate"));
         trip.setStatus(Status.valueOf(resultSet.getString("t_status")));
         trip.setTask(resultSet.getString("t_task"));
 
@@ -111,7 +111,7 @@ public class TripRepositoryImpl implements TripRepository {
         int count = 0;
    //     statement.setLong(++count, trip.getVehicle().getId()); //changed this. Trip creating won't work with uncommented
      //   statement.setLong(++count, trip.getBooking().getId()); //and this
-        statement.setDate(++count, trip.getCreate_date());
+        statement.setDate(++count, trip.getCreateDate());
         statement.setString(++count, String.valueOf(trip.getStatus()));
         statement.setString(++count, trip.getTask());
     }
@@ -121,7 +121,7 @@ public class TripRepositoryImpl implements TripRepository {
         statement.setLong(++count, trip.getId());
         statement.setLong(++count, trip.getVehicle().getId());
         statement.setLong(++count, trip.getBooking().getId());
-        statement.setDate(++count, trip.getCreate_date());
+        statement.setDate(++count, trip.getCreateDate());
         statement.setString(++count, String.valueOf(trip.getStatus()));
         statement.setLong(++count, trip.getId());
     }

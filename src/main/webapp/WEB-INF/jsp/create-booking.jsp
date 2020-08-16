@@ -14,7 +14,7 @@
 
     <form action="/user/create-booking?role=${user.role}" method="post">
         <fieldset class="clearfix">
-        <input type="text" name="user_id" value="${user.id}"/>
+        <input type="text" name="userId" value="${user.id}"/>
         <input type="text" name="id" value="${id}"/>
         <input type="text" name="specification" value="specification"/>
         <input type="submit" id="accept" name="submit" value="<fmt:message key="save"/>"/>

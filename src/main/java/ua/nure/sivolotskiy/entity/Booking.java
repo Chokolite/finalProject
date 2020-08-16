@@ -3,7 +3,7 @@ package ua.nure.sivolotskiy.entity;
 public class Booking extends Entity{
     private Trip trip;
     private Entity user;
-    private String vehicle_specification;
+    private String vehicleSpecification;
 
 public Booking(){
 }
@@ -26,11 +26,11 @@ public Booking(Long id){
         this.user = user;
     }
 
-    public String getVehicle_specification() {
-        return vehicle_specification;
+    public String getVehicleSpecification() {
+        return vehicleSpecification;
     }
 
-    public void setVehicle_specification(String vehicle_specification) {
-        this.vehicle_specification = vehicle_specification;
+    public void setVehicleSpecification(String vehicleSpecification) {
+        this.vehicleSpecification = vehicleSpecification;
     }
 }

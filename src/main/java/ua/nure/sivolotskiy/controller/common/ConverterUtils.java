@@ -1,6 +1,5 @@
 package ua.nure.sivolotskiy.controller.common;
 
-
 import ua.nure.sivolotskiy.entity.*;
 import ua.nure.sivolotskiy.exception.ValidationEnum;
 import ua.nure.sivolotskiy.exception.ValidationException;
@@ -15,7 +14,7 @@ public class ConverterUtils {
     public static Booking convertRequestToBooking(HttpServletRequest request) {
         Booking booking = new Booking();
         booking.setId(getIdFromRequest(request));
-        booking.setVehicle_specification(request.getParameter("vehicle_specification"));
+        booking.setVehicleSpecification(request.getParameter("vehicleSpecification"));
         User user = new User();
         user.setId(getIdFromRequest(request));
 
@@ -38,8 +37,8 @@ public class ConverterUtils {
         Booking booking = new Booking();
         Vehicle vehicle = new Vehicle();
 
-        String vehicleBuf = request.getParameter("vehicle_id");
-        String bookingBuf = request.getParameter("booking_id");
+        String vehicleBuf = request.getParameter("vehicleId");
+        String bookingBuf = request.getParameter("bookingId");
 
         if (bookingBuf == null) {
             booking.setId(0L);
@@ -55,7 +54,7 @@ public class ConverterUtils {
         trip.setVehicle(vehicle);
         trip.setBooking(booking);
         trip.setId(getIdFromRequest(request));
-        trip.setCreate_date(SQLDate);
+        trip.setCreateDate(SQLDate);
         trip.setStatus(Status.valueOf(request.getParameter("status")));
         trip.setTask(request.getParameter("task"));
         return trip;
@@ -65,7 +64,7 @@ public class ConverterUtils {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String reRassword = request.getParameter("re_password");
+        String reRassword = request.getParameter("rePassword");
         if (!password.equals(reRassword)) {
             ValidationException.builder().put("passwordError", ValidationEnum.PASSWORDS_DO_NOT_MATCH).throwIfErrorExists();
         }
@@ -83,7 +82,7 @@ public class ConverterUtils {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String reRassword = request.getParameter("re_password");
+        String reRassword = request.getParameter("rePassword");
         if (!password.equals(reRassword)) {
             ValidationException.builder().put("passwordError", ValidationEnum.PASSWORDS_DO_NOT_MATCH).throwIfErrorExists();
         }
@@ -101,7 +100,7 @@ public class ConverterUtils {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String reRassword = request.getParameter("re_password");
+        String reRassword = request.getParameter("rePassword");
         if (!password.equals(reRassword)) {
             ValidationException.builder().put("passwordError", ValidationEnum.PASSWORDS_DO_NOT_MATCH).throwIfErrorExists();
         }
@@ -118,8 +117,8 @@ public class ConverterUtils {
         String name = request.getParameter("name");
         Long sits = Long.valueOf(request.getParameter("sits"));
         Type type = Type.valueOf(request.getParameter("type"));
-        Trunk_Size trunk_size = Trunk_Size.valueOf(request.getParameter("trunk_size"));
-        String car_class = request.getParameter("car_class");
+        TrunkSize trunkSize = TrunkSize.valueOf(request.getParameter("trunkSize"));
+        String carClass = request.getParameter("carClass");
         Condition condition = Condition.valueOf(request.getParameter("condition"));
         Long id = Long.valueOf(request.getParameter("id"));
 
@@ -130,20 +129,19 @@ public class ConverterUtils {
         vehicle.setName(name);
         vehicle.setSits(sits);
         vehicle.setType(type);
-        vehicle.setTrunk_size(trunk_size);
-        vehicle.setCar_class(car_class);
+        vehicle.setTrunkSize(trunkSize);
+        vehicle.setCarClass(carClass);
         vehicle.setCondition(condition);
 
         return vehicle;
     }
 
-
     public static Long getIdFromRequest(HttpServletRequest request) {
         if (Objects.nonNull(request.getParameter("id"))) {
             return Long.parseLong(request.getParameter("id"));
-        } else if (Objects.nonNull(request.getParameter("user_id"))) {
-            System.out.println(request.getParameter("user_id"));
-            return Long.parseLong(request.getParameter("user_id"));
+        } else if (Objects.nonNull(request.getParameter("userId"))) {
+            System.out.println(request.getParameter("userId"));
+            return Long.parseLong(request.getParameter("userId"));
         } else {
             return null;
         }

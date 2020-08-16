@@ -7,8 +7,8 @@ public class Trip extends Entity{
     private Vehicle vehicle;
     private Status status;
     private Booking booking;
-    private Long vehicle_id;
-    private Date create_date;
+    private Long vehicleId;
+    private Date createDate;
     private String task;
 
   public Trip(){
@@ -26,12 +26,12 @@ public class Trip extends Entity{
         this.status = status;
     }
 
-    public Long getVehicle_id() {
-        return vehicle_id;
+    public Long getVehicleId() {
+        return vehicleId;
     }
 
-    public void setVehicle_id(Long vehicle_id) {
-        this.vehicle_id = vehicle_id;
+    public void setVehicleId(Long vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
     public Vehicle getVehicle() {
@@ -50,12 +50,12 @@ public class Trip extends Entity{
         this.booking = booking;
     }
 
-    public Date getCreate_date() {
-        return create_date;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreate_date(Date create_date) {
-        this.create_date = create_date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getTask() {
