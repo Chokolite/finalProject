@@ -24,9 +24,9 @@
             </tr>
 
             <tr>
-                <td><input type="number" name="id" value="${vehicle.id}"></td>
-                <td><input type="text" name="name" value="${vehicle.name}"></td>
-                <td><input type="number" name="sits" value="${vehicle.sits}"></td>
+                <td><input type="number" name="id" value="${vehicle.id}" required></td>
+                <td><input type="text" name="name" value="${vehicle.name}" required></td>
+                <td><input type="number" name="sits" value="${vehicle.sits}" required></td>
                 <td>
                     <select name="type" size="1">
                         <option value="${vehicle.type}" selected>${vehicle.type}</option>
@@ -34,11 +34,11 @@
                         <option value="SUV"><fmt:message key="suv"/></option>
                         <option value="MINIVAN"><fmt:message key="minivan"/></option>
                         <option value="VAN"><fmt:message key="van"/></option>
-                        <option value="MINITRUCK"><fmt:message key="Minitruck"/></option>
+                        <option value="MINITRUCK"><fmt:message key="minitruck"/></option>
                     </select>
                 </td>
                 <td>
-                    <select name="trunk_size" size="1">
+                    <select name="trunk_size" size="1" required>
                         <option value="${vehicle.trunk_size}" selected>${vehicle.trunk_size}</option>
                         <option value="TINY"><fmt:message key="tiny"/></option>
                         <option value="SMALL"><fmt:message key="small"/></option>
@@ -46,9 +46,9 @@
                         <option value="LARGE"><fmt:message key="large"/></option>
                     </select>
                 </td>
-                <td><input type="text" name="car_class" value="${vehicle.car_class}"/></td>
+                <td><input type="text" name="car_class" value="${vehicle.car_class}" required/></td>
                 <td>
-                    <p><select name="condition" size="1">
+                    <p><select name="condition" size="1" required>
                         <option value="${vehicle.condition}" selected>${vehicle.condition}</option>
                         <option value="GOOD">Good</option>
                         <option value="BROKEN">Broken</option>
