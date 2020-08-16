@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `booking`;
 CREATE TABLE `booking` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `tripId` bigint DEFAULT NULL,
-  `user_id` bigint NOT NULL,
+  `userId` bigint NOT NULL,
   `vehicleSpecification` text NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_id_idx` (`user_id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
+  KEY `user_id_idx` (`userId`),
+  CONSTRAINT `user_id` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES (87,57,6,'specification'),(89,58,10,'specification'),(90,58,10,'specificationghjgjgjg');
+INSERT INTO `booking` VALUES (89,58,10,'specification'),(90,58,10,'specificationghjgjgjg'),(91,60,6,'specification');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,10 +60,10 @@ CREATE TABLE `trip` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `vehicle_od_idx` (`vehicleId`),
-  KEY `bookingId_idx` (`bookingId`),
+  KEY `booking_id_idx` (`bookingId`),
   CONSTRAINT `bookingId` FOREIGN KEY (`bookingId`) REFERENCES `booking` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `vehicleId` FOREIGN KEY (`vehicleId`) REFERENCES `vehicle` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `trip` (
 
 LOCK TABLES `trip` WRITE;
 /*!40000 ALTER TABLE `trip` DISABLE KEYS */;
-INSERT INTO `trip` VALUES (55,1,NULL,'2020-08-12','CLOSED','gfdgdgdg'),(56,9,NULL,'2020-11-24','CLOSED','sdfga sd fsdfsdf'),(57,1,87,'2020-08-27','IN_WORK','gfdgdgd'),(58,1,89,'2020-08-25','OPEN','fghdh');
+INSERT INTO `trip` VALUES (55,1,NULL,'2020-08-12','CLOSED','gfdgdgdg'),(56,9,NULL,'2020-11-24','CLOSED','sdfga sd fsdfsdf'),(57,1,NULL,'2020-08-27','IN_WORK','gfdgdgd'),(58,7,89,'2020-08-24','OPEN','fghdh'),(60,10,91,'2020-08-25','OPEN','gdfgdfgd');
 /*!40000 ALTER TABLE `trip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `users` (
   `enabled` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com','ADMIN',1),(2,'Jake','Jake','jake@mail.com','DISPATCHER',1),(3,'Mike','Mike','mike@mail.com','DISPATCHER',0),(4,'Ivan','Ivan','ivan@mail.com','DRIVER',0),(6,'Edward','21232F297A57A5A743894A0E4A801FC3','admin@mail.com','ADMIN',1),(10,'Voldemar','21232F297A57A5A743894A0E4A801FC3','driver@mail.com','DRIVER',1),(11,'Jake','21232F297A57A5A743894A0E4A801FC3','dispatcher@mail.com','DISPATCHER',1),(12,'TestCreate','21232F297A57A5A743894A0E4A801FC3','test@mail.com','DISPATCHER',1);
+INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com','ADMIN',1),(2,'Jake','Jake','jake@mail.com','DISPATCHER',1),(3,'Mike','Mike','mike@mail.com','DISPATCHER',0),(4,'Ivan','Ivan','ivan@mail.com','DRIVER',0),(6,'Edward','21232F297A57A5A743894A0E4A801FC3','admin@mail.com','ADMIN',1),(10,'Voldemar','21232F297A57A5A743894A0E4A801FC3','driver@mail.com','DRIVER',1),(11,'Jake','21232F297A57A5A743894A0E4A801FC3','dispatcher@mail.com','DISPATCHER',1),(12,'TestCreate','21232F297A57A5A743894A0E4A801FC3','test@mail.com','DISPATCHER',1),(14,'Test','A8A76790FF950B754DE0B8FA5824CEEE','dsfsdfsg@gsrdfgsdg.ua','ADMIN',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `vehicle` (
   `name` varchar(45) NOT NULL,
   `sits` bigint NOT NULL DEFAULT '2',
   `type` enum('SEDAN','SUV','MINIVAN','VAN','MINITRUCK') NOT NULL,
-  `trunk_size` enum('TINY','SMALL','MEDIUM','LARGE') NOT NULL DEFAULT 'TINY',
+  `trunkSize` enum('TINY','SMALL','MEDIUM','LARGE') NOT NULL DEFAULT 'TINY',
   `class` varchar(8) DEFAULT 'w/o',
   `condition` enum('GOOD','BROKEN') NOT NULL DEFAULT 'GOOD',
   PRIMARY KEY (`id`),
@@ -131,7 +131,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES (1,'BMW',4,'SEDAN','SMALL','Q','GOOD'),(7,'toyota',7,'MINIVAN','SMALL','M','BROKEN'),(8,'ford transit',2,'VAN','LARGE',NULL,'GOOD'),(9,'toyota rav4',5,'SUV','MEDIUM','J','GOOD'),(10,'Tata ace',2,'MINITRUCK','LARGE',NULL,'GOOD'),(14,'dfgdg',12,'SEDAN','TINY','Q','GOOD');
+INSERT INTO `vehicle` VALUES (1,'bmw',1,'SEDAN','SMALL','Q','GOOD'),(7,'toyota',7,'MINIVAN','SMALL','M','BROKEN'),(8,'ford transit',2,'VAN','LARGE',NULL,'GOOD'),(9,'toyota rav4',5,'SUV','MEDIUM','J','GOOD'),(10,'Tata ace',2,'MINITRUCK','LARGE',NULL,'GOOD');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -144,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-16  9:54:34
+-- Dump completed on 2020-08-16 13:10:36
