@@ -5,3 +5,8 @@
 > - dispatcher@mail.com
 > - driver@mail.com
 >   - password: *admin*
+
+Need to make:
+- [ ] Comments
+- [ ] Unit tests
+- [ ] Custom JSTL tag
