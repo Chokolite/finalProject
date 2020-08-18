@@ -115,6 +115,9 @@ public class SecurityFilter implements Filter {
     }
 
     private boolean isUserEnabled(User user) {
+        if(user.getId() <= 0){
+            return true;
+        }
         return userService.isEnabledById(user.getId());
     }
 
